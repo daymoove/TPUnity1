@@ -6,6 +6,9 @@ using UnityEngine;
 public class Player_move : MonoBehaviour
 {
     [SerializeField]
+    GameObject WinScreen;
+
+    [SerializeField]
     private float speed;
 
     [SerializeField]
@@ -44,9 +47,11 @@ public class Player_move : MonoBehaviour
         } else if ((collision.gameObject.tag == "Ennemy") && life <= 0)
         {
             Destroy(gameObject);
+        } else if (collision.gameObject.tag == "Finish")
+        {
+            WinScreen.SetActive(true);
+            Time.timeScale = 0f;
         }
-            
     }
-
 
 }

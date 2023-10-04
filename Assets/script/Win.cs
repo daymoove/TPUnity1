@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Asteroid : MonoBehaviour
+public class Win : MonoBehaviour
 {
-
     public float speed = 1f;
     public Vector3 targetPosition;
 
@@ -20,15 +19,6 @@ public class Asteroid : MonoBehaviour
         if (transform.position.y == -5)
         {
             Destroy(gameObject);
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player") 
-        {
-            Destroy(gameObject);
-
         }
     }
 }
