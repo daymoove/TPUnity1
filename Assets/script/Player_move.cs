@@ -7,6 +7,8 @@ public class Player_move : MonoBehaviour
 {
     [SerializeField]
     GameObject WinScreen;
+    [SerializeField]
+    GameObject Losescreen;
 
     [SerializeField]
     private float speed;
@@ -17,7 +19,7 @@ public class Player_move : MonoBehaviour
     private float move;
     private float rotation;
 
-    private float life = 3;
+
     void Update(){
 
         move = Input.GetAxisRaw("Vertical") * speed * Time.deltaTime;
@@ -40,13 +42,12 @@ public class Player_move : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((collision.gameObject.tag == "Ennemy") && life > 0)
-        {
-            transform.position = new Vector2(0, -5);
-            life--;
-        } else if ((collision.gameObject.tag == "Ennemy") && life <= 0)
+        if ((collision.gameObject.tag == "Ennemy") )
         {
             Destroy(gameObject);
+            Losescreen.SetActive(true);
+            Time.timeScale = 0f;
+
         } else if (collision.gameObject.tag == "Finish")
         {
             WinScreen.SetActive(true);

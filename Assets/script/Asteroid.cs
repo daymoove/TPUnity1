@@ -5,7 +5,7 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
 
-    public float speed = 1f;
+    private float speed = 5f;
     public Vector3 targetPosition;
 
     private void Start()
@@ -17,7 +17,7 @@ public class Asteroid : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
-        if (transform.position.y == -5)
+        if (transform.position.y <= -5)
         {
             Destroy(gameObject);
         }
